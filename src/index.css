@@ -1,0 +1,154 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 260 65% 40%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 260 70% 35%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 260 65% 40%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 260 65% 40%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-dreamable-dark text-foreground;
+  }
+}
+
+.text-gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-dreamable-green to-dreamable-darkgreen;
+}
+
+.border-glow {
+  box-shadow: 0 0 5px rgba(94, 63, 176, 0.5), 
+              0 0 10px rgba(94, 63, 176, 0.3), 
+              0 0 15px rgba(94, 63, 176, 0.1);
+}
+
+.shimmer {
+  @apply relative overflow-hidden;
+}
+
+.shimmer::before {
+  @apply absolute top-0 -left-3/4 z-10 block w-1/2 h-full skew-x-[-20deg];
+  background: linear-gradient(to right, 
+    rgba(94, 63, 176, 0) 0%,
+    rgba(94, 63, 176, 0.08) 80%, 
+    rgba(94, 63, 176, 0.15) 90%,
+    rgba(94, 63, 176, 0) 100%
+  );
+  content: '';
+  animation: shimmer 2.5s ease infinite;
+}
+
+/* Animation classes */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+/* Hero animations */
+.hero-title {
+  animation: fadeInDown 1s ease-out forwards;
+}
+
+.hero-subtitle {
+  animation: fadeInUp 1s 0.3s ease-out forwards;
+  opacity: 0;
+}
+
+.hero-buttons {
+  animation: fadeIn 1s 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.hero-badge {
+  animation: fadeInLeft 1s 0.2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
